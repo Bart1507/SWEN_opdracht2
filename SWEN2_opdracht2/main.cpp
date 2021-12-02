@@ -4,6 +4,30 @@
 #include <iostream>
 #include <stdio.h>
 
+    // Feature 2 - bubble sort
+int* bubbleSort(int arr[])
+{
+    static int bubbleArray[20];
+
+    int temp;
+
+    for (int i = 0; i < 20; i++)
+    {
+        bubbleArray[i] = arr[i];
+    }
+    for (int i = 0; i < 20; i++) {
+        for (int j = i + 1; j < 20; j++)
+        {
+            if (bubbleArray[j] < bubbleArray[i]) {
+                temp = bubbleArray[i];
+                bubbleArray[i] = bubbleArray[j];
+                bubbleArray[j] = temp;
+            }
+        }
+    }
+    return bubbleArray;
+}
+
 
 int main()
 {
@@ -12,7 +36,7 @@ int main()
     // Feature 1 - CLI
 
     int randArray[20];
-
+    int *bubbleArray;
     for (int i = 0; i < 20; i++) {
         randArray[i] = rand() % 100;  //Generate number between 0 to 99
     }
@@ -21,21 +45,10 @@ int main()
     for (int i = 0; i < 20; i++) {
         std::cout << "Elements no " << i + 1 << ": " << randArray[i] << std::endl;
     }
-    // Feature 2 - bubble sort
-    int temp;
-    for (int i = 0; i < 20; i++) {
-        for (int j = i + 1; j < 20; j++)
-        {
-            if (randArray[j] < randArray[i]) {
-                temp = randArray[i];
-                randArray[i] = randArray[j];
-                randArray[j] = temp;
-            }
-        }
-    }
 
+    bubbleArray = bubbleSort(randArray);
     for (int i = 0; i < 20; i++) {
-        std::cout << "Elements no " << i + 1 << ": " << randArray[i] << std::endl;
+        std::cout << "Elements no " << i + 1 << ": " << bubbleArray[i] << std::endl;
     }
 
     return 0;
