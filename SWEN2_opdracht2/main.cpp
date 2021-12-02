@@ -91,43 +91,6 @@ void mergeSort(int array[], int const begin, int const end)
     merge(array, begin, mid, end);
 }
 
-
-int main()
-{
-    std::cout << "Hello SWEN Opdracht 2!\n";
-
-    // Feature 1 - CLI
-
-    int randArray[20];
-    int *bubbleArray;
-    int mergeArray[20];
-    for (int i = 0; i < 20; i++) {
-        randArray[i] = rand() % 100;  //Generate number between 0 to 99
-    }
-    std::cout << "\nElements of the array: " << std::endl;
-
-    for (int i = 0; i < 20; i++) {
-        std::cout << "Elements no " << i + 1 << ": " << randArray[i] << std::endl;
-    }
-
-
-    bubbleArray = bubbleSort(randArray);
-    for (int i = 0; i < 20; i++) {
-        std::cout << "BubbleElements no " << i + 1 << ": " << bubbleArray[i] << std::endl;
-    }
-    //copy to merge array
-    for (int i = 0; i < 20; i++) {
-        mergeArray[i] = randArray[i];
-    }
-    mergeSort(mergeArray, 0, 19);
-    for (int i = 0; i < 20; i++) {
-        std::cout << "MergeElements no " << i + 1 << ": " << mergeArray[i] << std::endl;
-    }
-    //copy
-    return 0;
-}
-
-
 void heapify(int arr[], int n, int i)
 {
     int largest = i; // Initialize largest as root
@@ -165,4 +128,62 @@ void heapSort(int arr[], int n)
         // call max heapify on the reduced heap
         heapify(arr, i, 0);
     }
+}
+
+int main()
+{
+    std::cout << "Hello SWEN Opdracht 2!\n";
+
+    // FEATURE 1 - CLI
+
+    int randArray[20];
+    int *bubbleArray;
+    int mergeArray[20];
+    int heapArray[20];
+    for (int i = 0; i < 20; i++) {
+        randArray[i] = rand() % 100;  //Generate number between 0 to 99
+    }
+    std::cout << "\nElements of the array: " << std::endl;
+
+    for (int i = 0; i < 20; i++) {
+        std::cout << "Elements no " << i + 1 << ": " << randArray[i] << std::endl;
+    }
+    std::cout << "\n" << std::endl;
+
+
+    // FEATURE 2 - Bubble sort
+
+    bubbleArray = bubbleSort(randArray);
+    for (int i = 0; i < 20; i++) {
+        std::cout << "BubbleElements no " << i + 1 << ": " << bubbleArray[i] << std::endl;
+    }
+    std::cout << "\n" << std::endl;
+
+    // FEATURE 3 - Merge sort
+
+    //copy to merge array
+    for (int i = 0; i < 20; i++) {
+        mergeArray[i] = randArray[i];
+    }
+    mergeSort(mergeArray, 0, 19);
+    for (int i = 0; i < 20; i++) {
+        std::cout << "MergeElements no " << i + 1 << ": " << mergeArray[i] << std::endl;
+    }
+    std::cout << "\n" << std::endl;
+
+    // FEATURE 3 - Merge sort
+
+    //copy to heap array
+    for (int i = 0; i < 20; i++) {
+        heapArray[i] = randArray[i];
+    }
+
+    int heapSize = sizeof(heapArray) / sizeof(heapArray[0]);
+    heapSort(heapArray, heapSize);
+    for (int i = 0; i < 20; i++) {
+        std::cout << "HeapElements no " << i + 1 << ": " << heapArray[i] << std::endl;
+    }
+    std::cout << "\n" << std::endl;
+
+    return 0;
 }
