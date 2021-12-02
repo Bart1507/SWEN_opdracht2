@@ -5,18 +5,18 @@
 #include <stdio.h>
 
     // Feature 2 - bubble sort
-int* bubbleSort(int arr[])
+int* bubbleSort(int arr[], int size)
 {
     static int bubbleArray[20];
 
     int temp;
 
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; i < size; i++)
     {
         bubbleArray[i] = arr[i];
     }
-    for (int i = 0; i < 20; i++) {
-        for (int j = i + 1; j < 20; j++)
+    for (int i = 0; i < size; i++) {
+        for (int j = i + 1; j < size; j++)
         {
             if (bubbleArray[j] < bubbleArray[i]) {
                 temp = bubbleArray[i];
@@ -135,7 +135,11 @@ int main()
     std::cout << "Hello SWEN Opdracht 2!\n";
 
     // FEATURE 1 - CLI
-
+    char charArray[10] = { 'g','h','s','y','e','u','b','a','k','n' };
+    int charArrayToInt[10];
+    char bubbleCharArray[10];
+    char mergeCharArray[10];
+    char heapCharArray[10];
     int randArray[20];
     int *bubbleArray;
     int mergeArray[20];
@@ -153,7 +157,7 @@ int main()
 
     // FEATURE 2 - Bubble sort
 
-    bubbleArray = bubbleSort(randArray);
+    bubbleArray = bubbleSort(randArray, 20);
     for (int i = 0; i < 20; i++) {
         std::cout << "BubbleElements no " << i + 1 << ": " << bubbleArray[i] << std::endl;
     }
@@ -171,7 +175,7 @@ int main()
     }
     std::cout << "\n" << std::endl;
 
-    // FEATURE 3 - Merge sort
+    // FEATURE 3 - Heap sort
 
     //copy to heap array
     for (int i = 0; i < 20; i++) {
@@ -184,6 +188,66 @@ int main()
         std::cout << "HeapElements no " << i + 1 << ": " << heapArray[i] << std::endl;
     }
     std::cout << "\n" << std::endl;
+
+    //char
+
+    for (int i = 0; i < 10; i++) {
+        std::cout << "CharElements no " << i + 1 << ": " << charArray[i] << std::endl;
+    }
+    std::cout << "\n" << std::endl;
+
+
+    //copy char to int
+
+    for (int i = 0; i < 10; i++) {
+        charArrayToInt[i] = (int)charArray[i];
+    }
+    std::cout << "\n" << std::endl;
+
+    // FEATURE 2 - Bubble sort
+
+    bubbleArray = bubbleSort(charArrayToInt, 10);
+    for (int i = 0; i < 10; i++) {
+        bubbleCharArray[i] = bubbleArray[i];
+    }
+    for (int i = 0; i < 10; i++) {
+        std::cout << "BubbleElements no " << i + 1 << ": " << bubbleCharArray[i] << std::endl;
+    }
+    std::cout << "\n" << std::endl;
+
+    // FEATURE 3 - Merge sort
+
+    //copy to merge array
+    for (int i = 0; i < 10; i++) {
+        mergeArray[i] = charArrayToInt[i];
+    }
+    mergeSort(mergeArray, 0, 9);
+    for (int i = 0; i < 10; i++) {
+        mergeCharArray[i] = mergeArray[i];
+    }
+    for (int i = 0; i < 10; i++) {
+        std::cout << "MergeElements no " << i + 1 << ": " << mergeCharArray[i] << std::endl;
+    }
+    std::cout << "\n" << std::endl;
+
+    // FEATURE 3 - Heap sort
+
+    //copy to heap array
+    for (int i = 0; i < 10; i++) {
+        heapArray[i] = charArrayToInt[i];
+    }
+
+    int heapSizeChar = sizeof(heapArray) / sizeof(heapArray[0]);
+    heapSort(heapArray, 10);
+
+    for (int i = 0; i < 10; i++) {
+        heapCharArray[i] = heapArray[i];
+    }
+    for (int i = 0; i < 10; i++) {
+        std::cout << "HeapElements no " << i + 1 << ": " << heapCharArray[i] << std::endl;
+    }
+    std::cout << "\n" << std::endl;
+
 
     return 0;
 }
