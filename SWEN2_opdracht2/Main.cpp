@@ -21,6 +21,22 @@ int main()
     for (int i = 0; i < 20; i++) {
         std::cout << "Elements no " << i + 1 << ": " << randArray[i] << std::endl;
     }
+    // Feature 2 - bubble sort
+    int temp;
+    for (int i = 0; i < 20; i++) {
+        for (int j = i + 1; j < 20; j++)
+        {
+            if (randArray[j] < randArray[i]) {
+                temp = randArray[i];
+                randArray[i] = randArray[j];
+                randArray[j] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < 20; i++) {
+        std::cout << "Elements no " << i + 1 << ": " << randArray[i] << std::endl;
+    }
 
     return 0;
 }
